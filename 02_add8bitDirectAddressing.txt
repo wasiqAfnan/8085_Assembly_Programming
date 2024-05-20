@@ -1,0 +1,6 @@
+lda 000AH	; load the content of memory location 000AH
+mov B,A		; move the content of A register to B register
+lda 000BH	; load the content of memory location 000AH
+add B 		; Add A register and B register
+sta 000CH	; store the result to memory location 000CH
+hlt

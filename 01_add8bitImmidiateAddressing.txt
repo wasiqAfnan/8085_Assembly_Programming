@@ -1,0 +1,4 @@
+mvi A,01H ; move 01H to A register
+mvi B,01H ; move 01H to B register
+add B	  ; add content of A and B register
+hlt

@@ -1,0 +1,11 @@
+lda 0000H
+mov B,A
+lda 0001H
+add B
+mvi C,00H
+jnc NOCARRY
+inr C
+NOCARRY: sta 0002H
+mov A,C
+sta 0003H
+hlt

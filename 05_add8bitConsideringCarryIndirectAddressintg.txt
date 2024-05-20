@@ -1,0 +1,13 @@
+lxi H,0000H
+mov A,M
+inx H
+mov B,M
+inx H
+add B
+mvi C,00H
+jnc NOC
+inr C
+NOC: mov M,A
+inx H
+mov M,C
+hlt
