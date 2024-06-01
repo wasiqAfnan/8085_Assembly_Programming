@@ -1,0 +1,6 @@
+LHLD 2000H	; load HL register with the value at address 2000h
+XCHG 		; exchange de and hl register data
+LHLD 20002H	; load HL register with the value at address 2000h
+DAD D		; double addition HL+DE store result to HL
+SHLD 2004H	; storing result at memory location 2004h
+HLT		; hault the program

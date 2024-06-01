@@ -1,0 +1,12 @@
+LHLD 2000H	; load HL register with the value at address 2000h
+XCHG 		; exchange de and hl register data
+LHLD 20002H	; load HL register with the value at address 2000h
+DAD D		; double addition HL+DE store result to HL
+MVI C,00H	; storing 0 in C register to clear any previous output
+JNC NOC		; jump to label NOC if no carry
+INR C		; Increament C register if carry
+NOC:
+SHLD 2004H	; storing result at memory location 2004h
+MOV A,C		; moving content of C to A register
+STA 2006H	; storing content of C in 2006h memory location
+HLT		; hault the program
