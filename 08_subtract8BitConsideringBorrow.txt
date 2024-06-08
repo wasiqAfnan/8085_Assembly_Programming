@@ -1,0 +1,13 @@
+lxi H,0000h		; Load HL pair with address of operand
+mov A,M			; Load A register with content of meomory pointed by HL
+inx H			; increament HL pair to point to the next memory location
+mov B,M			; Load B register with content of meomory pointed by HL
+mvi C,00H		; Load C register with data 00H
+inx H			; increament HL pair to point to the next memory location
+sub B			; A = A-B
+jnc NOCARRY		; Jump to label if no carry
+inr C			; Increaemnt C by one
+NOCARRY: mov M,A	; Load memory with the data of A register
+inx H			; increament HL pair to point to the next memory location
+mov M,C			; Move content of C to M to point out if the number is negative or positive
+hlt

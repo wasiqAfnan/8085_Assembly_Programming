@@ -1,0 +1,16 @@
+lhld 0033h
+xchg
+lhld 0035h
+mov A,E
+sub L
+mov L,A
+mov A,D
+sbb H
+mvi C,00h
+mov H,A
+jnc STR
+inr C
+STR: shld 0040h
+mov A,C
+sta 0041h
+hlt
