@@ -1,0 +1,14 @@
+lxi H,0000H		; Load HL pair with the address of first operand say 05h
+mov E,M			; Now load the operand to E register
+mvi D,00h		; Load D register with 00h
+inx H			; increament HL reguster.Now HL points to second operand say 03h
+mov A,M			; Load the second operand to A register
+lxi H,0000H		; Now load HL register with 0000H.This time it is not used to point to a memory location instead we are going to store the result in HL regiter this is why we have clear any previous data present in HL
+cpi 00H			; before Adding again and again we are checking that is the data present in accumulator is zero.
+; If data in the accumulator is zero then no need to perform any operation.bcz 0 * any number = 0
+jz STR			; if comparison of 00h any A register is zero then go to STR label
+LOOP:	dad D		; if A hold non zero data then add HL + DE pair and store result to HL register
+	dcr A		; Decreament A register
+	jnz LOOP	; if A is not zero then go to line 10 again and perform operation
+STR:	SHLD 0005H	; Store the result back to memory location
+hlt

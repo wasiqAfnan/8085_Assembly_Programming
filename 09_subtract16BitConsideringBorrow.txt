@@ -1,16 +1,17 @@
-lhld 0033h
-xchg
-lhld 0035h
-mov A,E
-sub L
-mov L,A
-mov A,D
-sbb H
-mvi C,00h
-mov H,A
-jnc STR
-inr C
-STR: shld 0040h
-mov A,C
-sta 0041h
+lhld 0033h			; load HL pair with data
+xchg				; exchange HL and DE registers
+lhld 0035h			; again load HL pair with second data
+mov A,E			; move first operand's lower byte data to A register
+sub L				; A=A-L
+mov L,A			; move the result of lower bytes subtraction to L register
+mov A,D			; move first operand higher byte data to A register
+sbb H				; A=A-H along with the previous borrow
+mvi C,00h			; C = 00h
+mov H,A			; move content of A register to H because A holds the result of subtraction of the higher order bytes
+;Now we have result stored HL register pair.H holds the higher order byte Subtraction Result and L holds the lower order byte subtraction results
+jnc STR				; if no carry then jump to label STR
+inr C				; C = 1
+STR: shld 0040h		; store the result back to memory from HL regster pair
+mov A,C			; move carry to A
+sta 0041h			; store A to memory
 hlt
